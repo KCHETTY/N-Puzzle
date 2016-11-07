@@ -22,14 +22,14 @@ PATH_SRC= ./src/
 
 PATH_HD= -I includes/
 
-SRC = $(PATH_SRC)main.cpp
+SRC = $(PATH_SRC)main.cpp $(PATH_SRC)save_data.cpp
 
-OBJ = main.o
+OBJ = main.o save_data.o
 
 $(NAME):
-	@echo "Compiling binaries..."	
-	@$(CC) $(CFLAGS) $(PATH_HD) -c $(SRC)
-	@$(CC) -o $(NAME) $(OBJ)
+	echo "Compiling binaries..."	
+	@$(CC) -std=c++11 $(CFLAGS) $(PATH_HD) -c $(SRC)
+	@$(CC) -std=c++11 -o $(NAME) $(OBJ)
 	@echo "Compilation was successful!"
 
 all: $(NAME)

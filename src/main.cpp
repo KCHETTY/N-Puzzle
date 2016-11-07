@@ -10,4 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "n_puzzle.h"
 
+void	init(t_global *g)
+{
+		g->dimension = 0;
+		g->malloc_flag = 0;
+}
+
+int		main(int argc, char **argv)
+{
+		t_global	g;		
+		
+		init(&g);
+	
+		if (argc == 2)
+		{
+				save_data(argv[1], &g);
+		}
+		return(0);
+}
