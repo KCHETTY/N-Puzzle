@@ -8,13 +8,9 @@ vector<int>	line_parse(string line, int i)
 
 	for (int z = 0; z < i; z++)
 	{
-		cout << "HI  " << line  << endl;
 		stuff.push_back(stoi(line));
 		line = line.substr(line.find(" ") + 1, line.length());
-		cout << "NEW " << line << endl; 
 	}
-	for (int s = 0; s < i; s++)
-		cout << "fjhajdfb " << stuff[s] << endl;
 	return (stuff);
 }
 

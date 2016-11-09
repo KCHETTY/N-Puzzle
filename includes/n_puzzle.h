@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:15:55 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/09 12:48:49 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/09 14:07:13 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_global
 void	save_data(t_global *g);
 void    malloc_puzzle(t_global *g);
 void	validate_data(string file, t_global *g);
+void	check_solvability(t_global *g);
 void    error(void);
 
 #endif
