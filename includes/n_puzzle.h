@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:15:55 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/07 14:15:56 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/09 10:27:41 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,21 @@
 # include <string>
 # include <vector>
 # include <regex>
+# include "puzzle.class.h"
+
+//g->co_ordinates.push_back(new coordinates());
 
 using namespace std;
 
 typedef struct	s_global
 {
-		int	**puzzle;
-		int	dimension;
-		int malloc_flag;
+		int				**puzzle;
+		int				dimension;
+		int				malloc_flag;
+		vector<map_puzzle*>	c_puzzle;
 }								t_global;
 
 void	save_data(string file, t_global *g);
+void    malloc_puzzle(t_global *g);
 
 #endif

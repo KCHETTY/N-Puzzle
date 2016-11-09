@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   functions.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 14:16:05 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/09 10:27:47 by kchetty          ###   ########.fr       */
+/*   Created: 2016/11/09 10:14:49 by kchetty           #+#    #+#             */
+/*   Updated: 2016/11/09 10:27:25 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "n_puzzle.h"
 
-void	init(t_global *g)
+void	malloc_puzzle(t_global *g)
 {
-	g->dimension = 0;
-	g->malloc_flag = 0;
-}
-
-int		main(int argc, char **argv)
-{
-	t_global	g;		
-	
-	init(&g);
-	save_data(argv[1], &g);
-	return(0);
+	g->puzzle = (int **)malloc(sizeof(int *) * g->dimension + 1);
+	for (int i = 0; i < g->dimension; i++)
+		g->puzzle[i] = (int *)malloc(sizeof(int) * g->dimension);
 }
