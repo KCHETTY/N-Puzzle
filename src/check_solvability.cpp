@@ -6,11 +6,13 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 12:55:43 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/09 14:07:09 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/09 14:32:08 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "n_puzzle.h"
+
 void	check_solvability(t_global *g)
 {
-		
+	cout << g->dimension << endl;	
 }

@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 10:33:18 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/09 12:45:46 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/09 14:39:11 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ string	fix_spaces(string line, int count)
 {
 	unsigned long int	i = 0;
 	string				fixed;
+
+	while(i < line.length())
+	{
+		if (isdigit(line[i]))
+			break ;
+		i++;
+	}
 
 	while(i < line.length())
 	{
