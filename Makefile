@@ -6,7 +6,7 @@
 #    By: kchetty <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 14:11:28 by kchetty           #+#    #+#              #
-#    Updated: 2016/11/09 10:27:00 by kchetty          ###   ########.fr        #
+#    Updated: 2016/11/09 10:44:28 by kchetty          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME=n_puzzle
 
 CC=g++
 
-CFLAGS=-Wall -Wextra -Werror -g
+CFLAGS= -Wall -Wextra -Werror -g
 
 RM=rm -f
 
@@ -22,9 +22,10 @@ PATH_SRC= ./src/
 
 PATH_HD= -I includes/
 
-SRC = $(PATH_SRC)main.cpp $(PATH_SRC)save_data.cpp $(PATH_SRC)functions.cpp
+SRC = $(PATH_SRC)main.cpp $(PATH_SRC)save_data.cpp $(PATH_SRC)functions.cpp \
+	  $(PATH_SRC)validate_data.cpp
 
-OBJ = main.o save_data.o functions.o
+OBJ = main.o save_data.o functions.o validate_data.o
 
 $(NAME):
 	echo "Compiling binaries..."	

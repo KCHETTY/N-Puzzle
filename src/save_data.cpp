@@ -23,8 +23,8 @@ void	save_data(string file, t_global *g)
 	string		line;
 	ifstream	input(file);
 	vector<int> str;
-	int				count = 0;
-	int r = 0; 
+	int			count = 0;
+	int			r = 0; 
 
 	while (getline(input, line).good())
 	{
