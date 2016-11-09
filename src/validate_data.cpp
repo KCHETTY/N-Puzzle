@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 10:33:18 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/09 11:53:51 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/09 12:15:03 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ string	fix_spaces(string line, int count)
 
 	while(i < line.length())
 	{
-		if ((isspace(line[i]) || (line[i] == '\t')) && 
+		if (((line[i]) == ' ' || (line[i] == '\t')) && (line[i + 1] == '\0'))
+			i++;
+		else if ((isspace(line[i]) || (line[i] == '\t')) && 
 				((line[i + 1] == ' ') || (line[i + 1] == '\t')))
 			i++;
 		else if ((line[i] == '\t') && (isdigit(line[i + 1])))
@@ -54,6 +56,26 @@ void	validate_line(string line, int count)
 	}
 }
 
+bool	check_line_size(string fixed, t_global *g, int line_count)
+{
+	int count = 0;
+
+	if (line_count > 1)
+	{
+		for (unsigned long int i = 0; i < fixed.length(); i++)
+		{
+			if (fixed[i] == ' ')
+				count++;		
+		}
+		count += 1;
+		cout << "count " << count << endl;
+		if (g->dimension == count)
+			return (true);
+		error();
+	}
+	return (false);	
+}
+
 void	validate_data(string file, t_global *g)
 {
 	string		line;
@@ -69,8 +91,11 @@ void	validate_data(string file, t_global *g)
 		fixed = fix_spaces(line, line_count);
 		cout << "the string " << fixed << endl;
 		validate_line(fixed, line_count);
-		//if (g->dimension == 0 && g->malloc_flag != 1)
-		//	g->dimension 
-
+		if (g->dimension == 0)
+			g->dimension = stoi(fixed);
+		if (check_line_size(fixed, g, line_count))
+		{
+			cout << "HI YALL" << endl;
+		}
 	}
 }
