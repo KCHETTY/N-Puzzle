@@ -18,42 +18,27 @@ vector<int>	line_parse(string line, int i)
 	return (stuff);
 }
 
-void	save_data(string file, t_global *g)
+void	save_data(t_global *g)
 {
-	string		line;
-	ifstream	input(file);
-	vector<int> str;
-	int			count = 0;
-	int			r = 0; 
+	vector<int>			str;
+	unsigned long int	r = 0; 
 
-	while (getline(input, line).good())
+	malloc_puzzle(g);
+	while (r < g->data.size())
 	{
-		cout << line << endl;
-		if (g->dimension == 0)
-			g->dimension = stoi(line);
-		else if (g->dimension != 0 && g->malloc_flag == 0)
-		{
-			malloc_puzzle(g);
-			g->malloc_flag = 1;	
-		}
-		if (r != 0)
-			str = line_parse(line, g->dimension);
+		cout << g->data[r] << endl;
+		str = line_parse(g->data[r], g->dimension);
 		cout << str.size() << endl;
-		if (str.size() == (unsigned int)g->dimension)
+		for (unsigned int x = 0; x < g->dimension; x++)
 		{
-			for (int y = 0; y < g->dimension; y++)
-			{
-				g->puzzle[count][y] = str[y];
-
-			}	
-			count++;
-		}
+				g->puzzle[r][x] = str[x];
+		}	
 		r++;
 	}
 
-	for (int u = 0; u < g->dimension; u++)
+	for (unsigned int u = 0; u < g->dimension; u++)
 	{
-		for (int k = 0; k < g->dimension; k++)
+		for (unsigned int k = 0; k < g->dimension; k++)
 		{
 			cout << g->puzzle[u][k];
 		}

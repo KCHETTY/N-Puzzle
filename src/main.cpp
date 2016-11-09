@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:16:05 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/09 12:15:05 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/09 12:48:47 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,19 @@ void	init(t_global *g)
 int		main(int argc, char **argv)
 {
 	t_global	g;		
-	
-	if (argc != 2)
-	{
-		return (0);
-	}
 
 	init(&g);
-	validate_data(argv[1], &g);
-	//save_data(argv[1], &g);
+
+	if (argc == 2)
+	{
+		validate_data(argv[1], &g);
+		if (g.data.size() == g.dimension)
+		{
+			save_data(&g);
+		}
+	}
+	else
+		cout << "missing file input" << endl;
 	return(0);
 }
 

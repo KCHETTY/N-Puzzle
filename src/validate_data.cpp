@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 10:33:18 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/09 12:15:03 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/09 12:45:46 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	validate_line(string line, int count)
 
 bool	check_line_size(string fixed, t_global *g, int line_count)
 {
-	int count = 0;
+	unsigned int count = 0;
 
 	if (line_count > 1)
 	{
@@ -94,8 +94,6 @@ void	validate_data(string file, t_global *g)
 		if (g->dimension == 0)
 			g->dimension = stoi(fixed);
 		if (check_line_size(fixed, g, line_count))
-		{
-			cout << "HI YALL" << endl;
-		}
+			g->data.push_back(fixed);
 	}
 }
