@@ -6,13 +6,13 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 10:33:18 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/09 11:15:05 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/09 11:53:51 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "n_puzzle.h"
 
-string	fix_spaces(string line)
+string	fix_spaces(string line, int count)
 {
 	unsigned long int	i = 0;
 	string				fixed;
@@ -24,7 +24,8 @@ string	fix_spaces(string line)
 			i++;
 		else if ((line[i] == '\t') && (isdigit(line[i + 1])))
 		{
-			fixed += ' ';
+			if (count != 1)
+				fixed += ' ';
 			i++;
 		}
 		else
@@ -37,17 +38,39 @@ string	fix_spaces(string line)
 	return (fixed);
 }
 
+void	validate_line(string line, int count)
+{
+	unsigned long int i = 0; 
+	while (i < line.length())
+	{
+		if (count == 1 && line[i] == '0' && i == 0)
+			error();
+		else if (line[i] == ' ')
+			i++;
+		else if (!isdigit(line[i]))
+			error();
+		else
+			i++;
+	}
+}
+
 void	validate_data(string file, t_global *g)
 {
 	string		line;
+	int			line_count = 0;
 	string		fixed;
     ifstream	input(file);
 
-	g->dimension = 0; 
+	g->dimension = 0;
 
 	while (getline(input, line).good())
 	{
-		fixed = fix_spaces(line);
+		line_count += 1;
+		fixed = fix_spaces(line, line_count);
 		cout << "the string " << fixed << endl;
+		validate_line(fixed, line_count);
+		//if (g->dimension == 0 && g->malloc_flag != 1)
+		//	g->dimension 
+
 	}
 }
