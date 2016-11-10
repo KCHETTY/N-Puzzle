@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:15:55 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/09 14:39:16 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/10 09:35:34 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct					s_global
 		int						malloc_flag;
 		vector<map_puzzle*>		c_puzzle;
 		vector<string>			data;
+		vector<int>				dummy;
 }								t_global;
 
 void	save_data(t_global *g);
