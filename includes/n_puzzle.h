@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:15:55 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/10 09:35:34 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/10 13:41:40 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ using namespace std;
 typedef struct					s_global
 {
 		int						**puzzle;
+		int						**mock_puzzle;
 		unsigned int			dimension;
 		int						malloc_flag;
 		vector<map_puzzle*>		c_puzzle;
