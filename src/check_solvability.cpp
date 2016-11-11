@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 12:55:43 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/10 13:41:38 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/11 08:22:11 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	write_array(t_global *g)
 void	validate_solvability(t_global *g)
 {
 	int i = 0;
-	float j = (g->dimension / 2);
+	float j = (g->dimension / 2.0);
 
 	g->mock_puzzle = (int **)malloc(sizeof(int *) * g->dimension + 1);
 	for (unsigned int i = 0; i < g->dimension; i++)
@@ -55,15 +55,12 @@ void	validate_solvability(t_global *g)
 		(g->dimension - 1);
 	g->mock_puzzle[g->dimension - 1][0] = (g->dimension + (g->dimension - 1)) + 
 		(g->dimension - 1);
-	
-	if ((j - (int)j) > 0.0)
-	{
-		cout << "Decimal points " << endl;
-	}
+
+	cout << "float " << j << endl;
+	if ((j -  (int)j) > 0.0)
+		g->mock_puzzle[(int)j][(int)j] = 11;
 	else
-	{
-		cout << "nan" << endl;
-	}
+		g->mock_puzzle[(int)j][(int)j - 1] = 11;
 
 	for (unsigned int y = 0; y < g->dimension; y++)
 	{
