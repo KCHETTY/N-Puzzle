@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:16:05 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/11 08:22:13 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/14 09:13:13 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,15 @@ int		main(int argc, char **argv)
 
 	init(&g);
 
-	if (argc == 2)
+	if (argc == 3)
 	{
-		validate_data(argv[1], &g);
+		validate_data(argv[2], &g);
+		g.heuristic = argv[1];
 		if (g.data.size() == g.dimension)
 		{
 			save_data(&g);
 			check_solvability(&g);
+			solve_puzzle(&g);
 		}
 	}
 	else

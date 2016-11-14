@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:15:55 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/14 08:41:34 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/14 09:13:15 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ using namespace std;
 typedef struct					s_global
 {
 		int						center_x;
+		char					*heuristic;
 		int						center_y;
 		int						**puzzle;
 		int						**mock_puzzle;
@@ -44,5 +45,6 @@ void    malloc_puzzle(t_global *g);
 void	validate_data(string file, t_global *g);
 void	check_solvability(t_global *g);
 void    error(void);
+void	solve_puzzle(t_global *g);
 
 #endif

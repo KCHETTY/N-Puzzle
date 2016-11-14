@@ -6,7 +6,7 @@
 #    By: kchetty <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 14:11:28 by kchetty           #+#    #+#              #
-#    Updated: 2016/11/09 12:58:09 by kchetty          ###   ########.fr        #
+#    Updated: 2016/11/14 09:08:30 by kchetty          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,12 +23,14 @@ PATH_SRC= ./src/
 PATH_HD= -I includes/
 
 SRC = $(PATH_SRC)main.cpp $(PATH_SRC)save_data.cpp $(PATH_SRC)functions.cpp \
-	  $(PATH_SRC)validate_data.cpp $(PATH_SRC)check_solvability.cpp
+	  $(PATH_SRC)validate_data.cpp $(PATH_SRC)check_solvability.cpp \
+	  $(PATH_SRC)solve_puzzle.cpp
 
-OBJ = main.o save_data.o functions.o validate_data.o check_solvability.o
+OBJ = main.o save_data.o functions.o validate_data.o check_solvability.o\
+	  solve_puzzle.o
 
 $(NAME):
-	echo "Compiling binaries..."	
+	@echo "Compiling binaries..."	
 	@$(CC) -std=c++11 $(CFLAGS) $(PATH_HD) -c $(SRC)
 	@$(CC) -std=c++11 -o $(NAME) $(OBJ)
 	@echo "Compilation was successful!"
