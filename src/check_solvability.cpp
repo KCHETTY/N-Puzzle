@@ -23,7 +23,7 @@ void	write_array(t_global *g)
 		{
 			for (unsigned int r = 0; r < (g->dimension * g->dimension); r++)
 			{
-				if (g->puzzle[y][x] == g->dummy[r] && 
+				if (g->c_puzzle[0]->get_puzzle(x, y) == g->dummy[r] && 
 						g->dummy[r] != (int)(g->dimension * g->dimension + 1))
 				{
 					cout << "TEST " << endl;
@@ -43,6 +43,103 @@ void	write_array(t_global *g)
 int spiral(int w, int h, int x, int y)
 {
 	return y ? w + spiral(h - 1, w, y - 1, w - x - 1) : x;
+}
+
+int	t_distance(t_global *g, int x, int y)
+{
+	cout << "XXXXX " << g->center_x << " " << "YYYYY " << g->center_y << endl;
+	return (sqrt(pow((x - g->center_x), 2) + pow((y - g->center_y), 2)));
+}
+
+void	reshuffle_array(t_global *g)
+{
+	int tmp_x;
+	int tmp_y;
+
+	for (unsigned int y = 0; y < g->dimension; y++)
+	{
+		for (unsigned int x = 0; x < g->dimension; x++)
+		{
+				if (g->c_puzzle[0]->get_puzzle(x, y) == 0)
+				{
+					tmp_x = x;
+					tmp_y = y;
+				}
+		}
+	}
+	
+	int dist = g->dimension;
+	int dist_tmp;;
+	int move = -1;
+	int tmp = 0;
+
+	cout << "CENTER X " << g->center_x << "   " << "CENTER Y " << g->center_y << endl;	
+	while (1)
+	{
+			if ((tmp_x == g->center_x) && (tmp_y == g->center_y))
+				break;
+			for (int t = 0; t < 4; t++)
+			{
+				 	if (t == 0 && tmp_x - 1 != -1)
+							dist_tmp = t_distance(g, tmp_x - 1, tmp_y);
+  			 	if (t == 1 && tmp_x + 1 != (int)g->dimension)
+				 			dist_tmp = t_distance(g, tmp_x + 1, tmp_y);			
+ 					if (t == 2 && tmp_y - 1 != -1)
+							dist_tmp = t_distance(g, tmp_x, tmp_y - 1);
+				 	if (t == 3 && tmp_y + 1 != (int)g->dimension)
+							dist_tmp = t_distance(g, tmp_x, tmp_y + 1);
+					cout << "distance " << dist_tmp << endl;
+					if (dist > dist_tmp)
+					{
+						move = t;
+						dist = dist_tmp;
+					}
+			} 
+			
+			dist = g->dimension;
+			if (dist == 0)
+				break ;
+			if (move == 0)
+			{
+				tmp = g->puzzle[tmp_y][tmp_x - 1];
+				g->puzzle[tmp_y][tmp_x] = tmp;
+				tmp_x -= 1;
+				g->puzzle[tmp_y][tmp_x] = 0;
+			}
+			if (move == 1)
+			{
+        tmp = g->puzzle[tmp_y][tmp_x + 1];
+        g->puzzle[tmp_y][tmp_x] = tmp;
+        tmp_x += 1;
+        g->puzzle[tmp_y][tmp_x] = 0;
+      }
+			if (move == 2)
+			{
+        tmp = g->puzzle[tmp_y - 1][tmp_x];
+        g->puzzle[tmp_y][tmp_x] = tmp;
+        tmp_y -= 1;
+        g->puzzle[tmp_y][tmp_x] = 0;
+      }
+			if (move == 3)
+			{
+        tmp = g->puzzle[tmp_y + 1][tmp_x];
+        g->puzzle[tmp_y][tmp_x] = tmp;
+        tmp_y += 1;
+        g->puzzle[tmp_y][tmp_x] = 0;
+      }
+		cout << "TMP_X " << tmp_x << "    "  << "TNP_Y "  << tmp_y << endl;	
+	}
+
+	for (unsigned int y = 0; y < g->dimension; y++)
+  {
+    for (unsigned int x = 0; x < g->dimension; x++)
+    {
+      cout << g->puzzle[y][x] << " ";
+    }
+    cout << endl;
+  }
+	
+	cout << "move " << move << endl;
 }
 
 void	validate_solvability(t_global *g)
@@ -70,10 +167,19 @@ void	validate_solvability(t_global *g)
 			g->mock_puzzle[u][j] = spiral(w, h, j, u) + 1;
 	}
 
+	cout << "JJJJJJJJJJJJJJJJJ " << j << endl;
 	if ((j -  (int)j) > 0.0)
+	{
+		g->center_x = (int)j;
+		g->center_y = (int)j;
 		g->mock_puzzle[(int)j][(int)j] = 0;
+	}
 	else
+	{
+		g->center_x = (int)j - 1;
+		g->center_y = (int)j;
 		g->mock_puzzle[(int)j][(int)j - 1] = 0;
+	}
 
 	for (unsigned int y = 0; y < g->dimension; y++)
 	{
@@ -88,8 +194,54 @@ void	validate_solvability(t_global *g)
 	cout << i << endl;
 }
 
+void	yes(t_global *g)
+{
+	int ha[(g->dimension * g->dimension) - 1];
+	int stuff = 0;
+	int i;
+
+	for (int y = 0; y < (int)g->dimension; y++)
+	{
+		for (int x = 0; x < (int)g->dimension; x++)
+		{
+			if (g->puzzle[y][x])
+			{
+				ha[i] = g->puzzle[y][x];
+				i++;
+			}
+		}
+	}
+
+	for (int i = 0; i < (int)(g->dimension * g->dimension); i++)
+	{
+		for (int k = i; k < (int)(g->dimension * g->dimension); k++)
+		{
+				if (ha[i] > ha[k])
+					stuff++;
+		}
+		cout << "STUFF " << stuff << endl;
+		if (i == 0)
+			ha[0] = stuff;
+		else
+			ha[0] += stuff;
+		stuff = 0;
+	}
+	
+	cout << "HAHAHAHA " << ha[0] << endl;
+	float j = (ha[0] / 2.0);
+	if ((j - (int)j) > 0.0)
+	{
+		cout << "unsolvabe..." << endl;
+		error();
+	}
+	else
+		cout << "solvable..." << endl;	
+}
+
 void	check_solvability(t_global *g)
 {
 	write_array(g);
 	validate_solvability(g);
+	reshuffle_array(g);
+	yes(g);
 }

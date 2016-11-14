@@ -16,6 +16,8 @@ void	init(t_global *g)
 {
 	g->dimension = 0;
 	g->malloc_flag = 0;
+	g->center_x = 0;
+	g->center_y = 0;
 }
 
 int		main(int argc, char **argv)

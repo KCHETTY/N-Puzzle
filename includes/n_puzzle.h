@@ -27,6 +27,8 @@ using namespace std;
 
 typedef struct					s_global
 {
+		int						center_x;
+		int						center_y;
 		int						**puzzle;
 		int						**mock_puzzle;
 		unsigned int			dimension;
