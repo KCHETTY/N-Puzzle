@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 12:55:43 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/14 09:01:47 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/16 09:20:30 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,11 +231,13 @@ void	yes(t_global *g)
 	float j = (ha[0] / 2.0);
 	if ((j - (int)j) > 0.0)
 	{
-		cout << "unsolvabe..." << endl;
-		error();
+		cout << "Solvable..." << endl;
 	}
 	else
+	{
 		cout << "solvable..." << endl;	
+		error();
+	}
 }
 
 void	check_solvability(t_global *g)

@@ -24,10 +24,10 @@ PATH_HD= -I includes/
 
 SRC = $(PATH_SRC)main.cpp $(PATH_SRC)save_data.cpp $(PATH_SRC)functions.cpp \
 	  $(PATH_SRC)validate_data.cpp $(PATH_SRC)check_solvability.cpp \
-	  $(PATH_SRC)solve_puzzle.cpp
+	  $(PATH_SRC)solve_puzzle.cpp $(PATH_SRC)manhattan.cpp
 
-OBJ = main.o save_data.o functions.o validate_data.o check_solvability.o\
-	  solve_puzzle.o
+OBJ = main.o save_data.o functions.o validate_data.o check_solvability.o \
+			solve_puzzle.o manhattan.o
 
 $(NAME):
 	@echo "Compiling binaries..."	

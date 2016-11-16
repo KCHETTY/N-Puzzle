@@ -32,6 +32,7 @@ typedef struct					s_global
 		char					*heuristic;
 		int						center_y;
 		int						**puzzle;
+		int						prev_move[2];
 		int						**mock_puzzle;
 		unsigned int			dimension;
 		int						malloc_flag;
@@ -41,10 +42,11 @@ typedef struct					s_global
 }								t_global;
 
 void	save_data(t_global *g);
-void    malloc_puzzle(t_global *g);
+void  malloc_puzzle(t_global *g);
 void	validate_data(string file, t_global *g);
 void	check_solvability(t_global *g);
-void    error(void);
+void  error(void);
+int		manhattan_heuristic(t_global *g);
 void	solve_puzzle(t_global *g);
 
 #endif
