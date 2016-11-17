@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:15:55 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/14 09:13:15 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/17 11:41:32 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string>
 # include <vector>
 # include <math.h>
+# include <unistd.h>
 # include <regex>
 # include "puzzle.class.h"
 
@@ -32,7 +33,7 @@ typedef struct					s_global
 		char					*heuristic;
 		int						center_y;
 		int						**puzzle;
-		int						prev_move[2];
+		vector<vector<int> >	prev_move;
 		int						**mock_puzzle;
 		unsigned int			dimension;
 		int						malloc_flag;
@@ -46,7 +47,7 @@ void  malloc_puzzle(t_global *g);
 void	validate_data(string file, t_global *g);
 void	check_solvability(t_global *g);
 void  error(void);
-int		manhattan_heuristic(t_global *g);
+vector<int>	manhattan_heuristic(t_global *g, int i, int tmp_x, int tmp_y);
 void	solve_puzzle(t_global *g);
 
 #endif
