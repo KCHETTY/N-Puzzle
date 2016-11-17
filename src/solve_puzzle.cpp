@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 09:02:02 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/17 11:41:36 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/17 11:48:26 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,6 @@ void	solve_puzzle(t_global *g)
 	tmp1.push_back(-1);	
 	tmp1.push_back(-1);
 	g->prev_move.push_back(tmp1);
-	
-	/*for (int i = 0; i < (int)g->dimension; i++)
-	  {
-	  for (int j = 0; j < (int)g->dimension; j++)
-	  {
-	  if (g->c_puzzle[0]->get_puzzle(j, i) == 0)
-	  {   
-	  x = j;
-	  y = i;
-	  }
-	  }
-	  }*/
 
 	while (1)
 	{
