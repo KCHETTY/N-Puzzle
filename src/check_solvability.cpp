@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 12:55:43 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/16 09:20:30 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/17 12:27:15 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,11 +232,11 @@ void	yes(t_global *g)
 	if ((j - (int)j) > 0.0)
 	{
 		cout << "Solvable..." << endl;
+		error();
 	}
 	else
 	{
 		cout << "solvable..." << endl;	
-		error();
 	}
 }
 

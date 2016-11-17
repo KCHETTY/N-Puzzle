@@ -112,7 +112,7 @@ int	do_calc(t_global *g, int x, int y, int move, int pos)
 			{
 				get_val(&tmp_x, &tmp_y, g, g->puzzle[k][m]);
 				//cout << "3333XXXXXXXXXXX  " << tmp_x << " 33333YYYYYYYYYY " << tmp_y << endl;
-				hey += calc_dist(m, k, tmp_x, tmp_y);
+				hey += calc_dist(m, k, tmp_x, tmp_y) + 1;
 				//cout << "HEYYEYEYYEYEY " << hey << endl;
 			}
 
