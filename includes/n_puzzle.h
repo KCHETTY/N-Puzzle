@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:15:55 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/17 11:41:32 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/18 11:12:45 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@ typedef struct					s_global
 		int						**mock_puzzle;
 		unsigned int			dimension;
 		int						malloc_flag;
-		vector<int>   move;
+		vector<int>				move;
 		vector<map_puzzle*>		c_puzzle;
 		vector<string>			data;
 		vector<int>				dummy;
 }								t_global;
 
 void	save_data(t_global *g);
-void  malloc_puzzle(t_global *g);
+void 	malloc_puzzle(t_global *g);
 void	validate_data(string file, t_global *g);
 void	check_solvability(t_global *g);
-void  error(void);
+void	error(void);
 void	manhattan_heuristic(t_global *g);
 void	solve_puzzle(t_global *g);
 

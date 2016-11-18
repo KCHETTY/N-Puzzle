@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 12:55:43 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/17 12:27:15 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/18 11:12:34 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,8 +199,61 @@ void	yes(t_global *g)
 	int ha[(g->dimension * g->dimension) - 1];
 	int stuff = 0;
 	int i = 0;
+	int row = g->dimension - 1;
+	int col = g->dimension - 1;
+	int l = 0;
+	int t = 0;
+	int dir = 0; 
 
-	for (int y = 0; y < (int)g->dimension; y++)
+
+	while (t <= row && t <= col)
+	{
+		if (dir == 0)
+		{
+			for (int z = l; z <= row; z++)
+			{
+				//cout << g->puzzle[t][z] << " ";
+				ha[i] = g->puzzle[t][z];
+				i++;
+			}
+			t++;
+		}
+		if (dir == 1)
+		{
+			for (int z = t; z <= col; z++)
+			{
+				//cout << g->puzzle[z][row] << " ";
+				ha[i] = g->puzzle[z][row];
+				i++;
+			}
+			row--;
+		}
+		if (dir == 2)
+		{
+			for (int z = row; z >= l; z--)
+			{
+				//cout << g->puzzle[col][z] << " ";
+				ha[i] = g->puzzle[col][z];
+				i++;
+			}
+			col--;
+		}
+		if (dir == 3)
+		{
+			for (int z = col; z >= t; z--)
+			{
+				//g->puzzle[z][l] << " ";
+				ha[i] = g->puzzle[z][l];
+				i++;
+			}
+			l++;
+		}
+		dir = (dir + 1) % 4; 
+	}
+
+	cout << "ITS A SPIRAL" << endl;
+
+	/*for (int y = 0; y < (int)g->dimension; y++)
 	{
 		for (int x = 0; x < (int)g->dimension; x++)
 		{
@@ -210,9 +263,9 @@ void	yes(t_global *g)
 				i++;
 			}
 		}
-	}
+	}*/
 
-	for (int i = 0; i < (int)(g->dimension * g->dimension); i++)
+	for (int i = 0; i < (int)(g->dimension * g->dimension) - 1; i++)
 	{
 		for (int k = i; k < (int)(g->dimension * g->dimension); k++)
 		{
@@ -232,11 +285,11 @@ void	yes(t_global *g)
 	if ((j - (int)j) > 0.0)
 	{
 		cout << "Solvable..." << endl;
+		error();
 	}
 	else
 	{
 		cout << "solvable..." << endl;	
-		error();
 	}
 }
 
