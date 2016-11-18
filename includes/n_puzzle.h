@@ -37,6 +37,7 @@ typedef struct					s_global
 		int						**mock_puzzle;
 		unsigned int			dimension;
 		int						malloc_flag;
+		vector<int>   move;
 		vector<map_puzzle*>		c_puzzle;
 		vector<string>			data;
 		vector<int>				dummy;
@@ -47,7 +48,7 @@ void  malloc_puzzle(t_global *g);
 void	validate_data(string file, t_global *g);
 void	check_solvability(t_global *g);
 void  error(void);
-vector<int>	manhattan_heuristic(t_global *g, int i, int tmp_x, int tmp_y);
+void	manhattan_heuristic(t_global *g);
 void	solve_puzzle(t_global *g);
 
 #endif

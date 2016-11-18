@@ -29,25 +29,33 @@ int	compare_array(t_global *g, int i)
 
 void	solve_puzzle(t_global *g)
 {
-	vector<int> move;
+	//vector<int> move;
 	vector<int> tmp1;
 	int x;
 	int y; 
 	int tmp = 0;
+	int powo = 0;
 
 	tmp1.push_back(-1);	
 	tmp1.push_back(-1);
 	g->prev_move.push_back(tmp1);
 
+	g->move.push_back(-1);
 	while (1)
 	{
 		/*if (compare_array(g))
-			break ;
-		if (strcmp(g->heuristic, "M") == 0)
-		  {
-		  cout << "M" << endl;
-		  move = manhattan_heuristic(g);
-		  }*/
+			break ;*/
+
+			powo = g->c_puzzle.size();
+			//sleep(1);
+			if (strcmp(g->heuristic, "M") == 0)
+			{
+		  	cout << "M" << endl;
+		  	manhattan_heuristic(g);
+			}
+
+		for (int t = 0; t < ((int)g->c_puzzle.size() - powo); t++ )
+			g->prev_move.push_back(tmp1);
 
 		for (unsigned long int k = 0; k < g->c_puzzle.size(); k++)
 		{
@@ -66,22 +74,25 @@ void	solve_puzzle(t_global *g)
 			}
 
 			cout << "XXXXXXXXXXX  " << x << "YYYYYYYYYY " << y << endl;
-
-			if (strcmp(g->heuristic, "M") == 0)
+		
+			/*if (strcmp(g->heuristic, "M") == 0)
 			{
 					cout << "M" << endl;
 					move = manhattan_heuristic(g, k, x, y);
-			}
-
-			if (move[k] == 0)
+			}*/
+			
+					cout << k << endl;
+			cout << "rjgeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee " << g->move[k] << endl;
+			if (g->move[k] == 0)
 			{
 				tmp = g->c_puzzle[k]->get_puzzle(x - 1, y);
 				g->c_puzzle[k]->set_puzzle(x, y, tmp);
 				g->prev_move[k][0] = x;
+				g->prev_move[k][1] = y;
 				x -= 1;
 				g->c_puzzle[k]->set_puzzle(x, y, 0);
 			}
-			if (move[k] == 1)
+			if (g->move[k] == 1)
 			{
 				tmp = g->c_puzzle[k]->get_puzzle(x + 1, y);
 				g->c_puzzle[k]->set_puzzle(x, y, tmp);
@@ -90,7 +101,7 @@ void	solve_puzzle(t_global *g)
 				x += 1;
 				g->c_puzzle[k]->set_puzzle(x, y, 0);
 			}
-			if (move[k] == 2)
+			if (g->move[k] == 2)
 			{
 				tmp = g->c_puzzle[k]->get_puzzle(x, y - 1);
 				g->c_puzzle[k]->set_puzzle(x, y, tmp);
@@ -99,7 +110,7 @@ void	solve_puzzle(t_global *g)
 				y -= 1;
 				g->c_puzzle[k]->set_puzzle(x, y, 0);
 			}
-			if (move[k] == 3)
+			if (g->move[k] == 3)
 			{
 				tmp = g->c_puzzle[k]->get_puzzle(x, y + 1);
 				g->c_puzzle[k]->set_puzzle(x, y, tmp);
@@ -109,8 +120,6 @@ void	solve_puzzle(t_global *g)
 				g->c_puzzle[k]->set_puzzle(x, y, 0);
 			}	
 
-			if (g->c_puzzle.size() > 1)
-				g->prev_move.push_back(tmp1);
 
 			cout << "FINAL POUT TFTSFTFWSDR WDGV " << k << endl;
 			for (int u = 0; u < (int)g->dimension; u++)
@@ -125,7 +134,16 @@ void	solve_puzzle(t_global *g)
 			if (compare_array(g, k))
 				return  ;
 
-			//sleep(15);
+			/*cout << "____________PREVIOUS MOVE SECTION_____________" << endl;
+			for (int u = 0; u <  (int)g->prev_move.size(); u++)
+      {
+        for (int t = 0; t < (int)g->prev_move[u].size(); t++)
+        {
+          cout << g->prev_move[u][t] << endl;
+        }
+      }*/
+
+			//sleep(1);
 		}
 	}
 }

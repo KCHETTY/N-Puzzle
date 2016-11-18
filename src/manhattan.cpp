@@ -112,7 +112,7 @@ int	do_calc(t_global *g, int x, int y, int move, int pos)
 			{
 				get_val(&tmp_x, &tmp_y, g, g->puzzle[k][m]);
 				//cout << "3333XXXXXXXXXXX  " << tmp_x << " 33333YYYYYYYYYY " << tmp_y << endl;
-				hey += calc_dist(m, k, tmp_x, tmp_y) + 1;
+				hey += calc_dist(m, k, tmp_x, tmp_y);
 				//cout << "HEYYEYEYYEYEY " << hey << endl;
 			}
 
@@ -123,21 +123,24 @@ int	do_calc(t_global *g, int x, int y, int move, int pos)
 
 }
 
-vector<int>		manhattan_heuristic(t_global *g, int i, int tmp_x, int tmp_y)
+void		manhattan_heuristic(t_global *g)
 {
-	vector<int> move;
-	//int tmp_x;
-	//int tmp_y;
-	int dist = (g->dimension * 1000);
-	int dist_tmp = dist + 1;
-
-	move.push_back(-1);
-	cout << "IM IIIIIIIIIIIIIIIIIIIII " << i << endl;
-	//cout << "XXXXXXXXXXX  " << tmp_x << "YYYYYYYYYY " << tmp_y << endl;
-	//cout << "PREV_X  " << g->prev_move[0] << "  PREV_Y  " << g->prev_move[1] << endl;
-	//get_blank(&tmp_x, &tmp_y, g, i);
-	cout << "XXXXXXXXXXX2222222222  " << tmp_x << "YYYYYYYYYY2222222 " << tmp_y << endl;
-	cout << "movevevevevev x " << g->prev_move[i][0] << " moveveveveve y " << g->prev_move[i][1] << endl;
+	//vector<int> move;
+	int tmp_x;
+	int tmp_y;
+	int dist; // = (g->dimension * 1000);
+	int dist_tmp = (g->dimension * 1000) + 1;
+	int powo = g->c_puzzle.size();
+	
+	for (int i = 0; i < powo; i++)
+	{
+		dist = (g->dimension * 1000);
+		cout << "IM IIIIIIIIIIIIIIIIIIIII " << i << endl;
+		//cout << "XXXXXXXXXXX  " << tmp_x << "YYYYYYYYYY " << tmp_y << endl;
+		//cout << "PREV_X  " << g->prev_move[0] << "  PREV_Y  " << g->prev_move[1] << endl;
+		get_blank(&tmp_x, &tmp_y, g, i);
+		cout << "XXXXXXXXXXX2222222222  " << tmp_x << "YYYYYYYYYY2222222 " << tmp_y << endl;
+		cout << "movevevevevev x " << g->prev_move[i][0] << " moveveveveve y " << g->prev_move[i][1] << endl;
 	for (int t = 0; t < 4; t++)
 	{
 		if ((t == 0) && ((tmp_x - 1) > -1))
@@ -176,18 +179,19 @@ vector<int>		manhattan_heuristic(t_global *g, int i, int tmp_x, int tmp_y)
 		cout << "distance " << dist_tmp << endl;
 		if (dist > dist_tmp)
 		{
-			move[0] = t;
+			g->move[i] = t;
 			dist = dist_tmp;
 		}
 		else if (dist == dist_tmp)
 		{
-			move.push_back(t);
+			g->move.push_back(t);
 			g->c_puzzle.push_back(new map_puzzle());
 			g->c_puzzle[g->c_puzzle.size() - 1]->malloc_puzzle(g->dimension);
 			create_array_2(g, i);
 		}
-		cout << "uwhsfrguwrwgbueru3utgergaeh erghaeuyh aergheu  " << move[0] << endl;
 		dist_tmp = (g->dimension * 1000 + 1);
 	}
-return (move);
+ 		//for (int o = 0; o < (int)g->move.size(); o++)
+      //cout << "HEY IM MOVE " << g->move[0] << endl;
+	}
 }

@@ -232,11 +232,11 @@ void	yes(t_global *g)
 	if ((j - (int)j) > 0.0)
 	{
 		cout << "Solvable..." << endl;
-		error();
 	}
 	else
 	{
 		cout << "solvable..." << endl;	
+		error();
 	}
 }
 
