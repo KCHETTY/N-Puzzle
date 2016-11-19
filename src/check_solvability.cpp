@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 12:55:43 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/19 09:42:10 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/19 10:11:56 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,7 +288,7 @@ void	yes(t_global *g)
 		cout << "unsolvable.." << endl;
 		error();
 	}
-	sleep(15);
+	//sleep(15);
 }
 
 void	check_solvability(t_global *g)
