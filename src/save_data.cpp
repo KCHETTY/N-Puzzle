@@ -41,7 +41,7 @@ void	swaps(int swap, t_global *g)
 	int ry2;
 	int temp;
 	struct timeval tp;
-	long int ms; // = tp.tv_sec * 1000 + tp.tv_usec / 1000;
+	long int ms  = tp.tv_sec * 1000 + tp.tv_usec / 1000;
 
 	s = 0;
 	while (s < swap)
@@ -79,7 +79,9 @@ void	map_gen(t_global *g)
 		 x = 0;
 		 for (int x = 0; x < (int)g->dimension; x++)
 				g->puzzle[y][x] = num++;
+		 y++;
 	}
+	
 	swaps(1000000, g);
 	
 	for (y = 0; y < (int)g->dimension; y++)
