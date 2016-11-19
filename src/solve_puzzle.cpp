@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 09:02:02 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/19 12:00:13 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/19 12:26:20 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	compare_array(t_global *g, int i)
 				}
 			}
 		}
+	cout << "Number of opened lists: " << g->c_puzzle.size() << endl;
+	cout << "Number of moves " << g->c_puzzle[i]->get_move() << endl;
 	return (1);
 }
 
@@ -113,7 +115,8 @@ void	solve_puzzle(t_global *g)
 				g->prev_move[k][1] = y;
 				y += 1;
 				g->c_puzzle[k]->set_puzzle(x, y, 0);
-			}	
+			}
+				g->c_puzzle[k]->set_move(1);	
 
 
 			cout << "FINAL POUT TFTSFTFWSDR WDGV " << k << endl;
@@ -138,7 +141,7 @@ void	solve_puzzle(t_global *g)
         }
       }*/
 
-		sleep(6);
+	//	sleep(6);
 		}
 	}
 }

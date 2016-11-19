@@ -127,10 +127,8 @@ int	do_calc(t_global *g, int x, int y, int move, int pos)
 		{
 			if (g->puzzle[k][m] != 0)
 			{
-				cout << "g_puzzle " << g->puzzle[k][m] << endl;
 				get_val(&tmp_x, &tmp_y, g, g->puzzle[k][m]);
 				hey += calc_dist(m, k, tmp_x, tmp_y, g);
-				cout << "ufagewufgaur " << hey << endl;
 			}
 
 		}

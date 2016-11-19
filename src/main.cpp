@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:16:05 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/14 09:13:13 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/19 12:25:39 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,21 @@ void	init(t_global *g)
 	g->center_y = 0;
 }
 
+void    testing(char *test)
+{
+	if (strcmp(test, "M") != 0)
+	{
+		if (strcmp(test, "E") != 0)
+		{
+			if (strcmp(test, "H") != 0)
+			{
+				cout << "Invalid Heuristic!" << endl;
+				exit(0);
+			}
+		}
+	}
+}
+
 int		main(int argc, char **argv)
 {
 	t_global	g;		
@@ -28,9 +43,10 @@ int		main(int argc, char **argv)
 
 	if (argc >= 2)
 	{
+		testing(argv[1]);
+		g.heuristic = argv[1];
 		if (argv[2] != NULL)
 			validate_data(argv[2], &g);
-		g.heuristic = argv[1];
 		save_data(&g);
 		check_solvability(&g);
 		solve_puzzle(&g);
