@@ -6,7 +6,7 @@
 #    By: kchetty <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 14:11:28 by kchetty           #+#    #+#              #
-#    Updated: 2016/11/14 09:08:30 by kchetty          ###   ########.fr        #
+#    Updated: 2016/11/19 09:20:10 by kchetty          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,10 @@ PATH_HD= -I includes/
 
 SRC = $(PATH_SRC)main.cpp $(PATH_SRC)save_data.cpp $(PATH_SRC)functions.cpp \
 	  $(PATH_SRC)validate_data.cpp $(PATH_SRC)check_solvability.cpp \
-	  $(PATH_SRC)solve_puzzle.cpp $(PATH_SRC)manhattan.cpp
+	  $(PATH_SRC)solve_puzzle.cpp $(PATH_SRC)heuristics.cpp
 
 OBJ = main.o save_data.o functions.o validate_data.o check_solvability.o \
-			solve_puzzle.o manhattan.o
+			solve_puzzle.o heuristics.o
 
 $(NAME):
 	@echo "Compiling binaries..."	
