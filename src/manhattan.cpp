@@ -104,18 +104,19 @@ int	do_calc(t_global *g, int x, int y, int move, int pos)
 	int tmp_y;
 	int hey = 0;
 
-	for (int k = 0; k < (int)g->dimension; k++)
+	if (strcmp(g->heuristic, "M") == 0)
 	{
-		for (int m = 0; m < (int)g->dimension; m++)
+		for (int k = 0; k < (int)g->dimension; k++)
 		{
-			if (g->puzzle[k][m] != 0)
+			for (int m = 0; m < (int)g->dimension; m++)
 			{
-				get_val(&tmp_x, &tmp_y, g, g->puzzle[k][m]);
-				//cout << "3333XXXXXXXXXXX  " << tmp_x << " 33333YYYYYYYYYY " << tmp_y << endl;
-				hey += calc_dist(m, k, tmp_x, tmp_y);
-				//cout << "HEYYEYEYYEYEY " << hey << endl;
-			}
+				if (g->puzzle[k][m] != 0)
+				{
+					get_val(&tmp_x, &tmp_y, g, g->puzzle[k][m]);
+					hey += calc_dist(m, k, tmp_x, tmp_y);
+				}
 
+			}
 		}
 	}
 
@@ -123,7 +124,7 @@ int	do_calc(t_global *g, int x, int y, int move, int pos)
 
 }
 
-void		manhattan_heuristic(t_global *g)
+void		heuristic(t_global *g)
 {
 	//vector<int> move;
 	int tmp_x;

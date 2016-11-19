@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 09:02:02 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/18 11:12:36 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/19 08:55:12 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,7 @@ void	solve_puzzle(t_global *g)
 			break ;*/
 
 			powo = g->c_puzzle.size();
-			//sleep(1);
-			if (strcmp(g->heuristic, "M") == 0)
-			{
-		  	cout << "M" << endl;
-		  	manhattan_heuristic(g);
-			}
+		  	heuristic(g);
 
 		for (int t = 0; t < ((int)g->c_puzzle.size() - powo); t++ )
 			g->prev_move.push_back(tmp1);

@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:15:55 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/18 11:12:45 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/19 09:03:47 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void 	malloc_puzzle(t_global *g);
 void	validate_data(string file, t_global *g);
 void	check_solvability(t_global *g);
 void	error(void);
-void	manhattan_heuristic(t_global *g);
+void	heuristic(t_global *g);
 void	solve_puzzle(t_global *g);
 
 #endif
