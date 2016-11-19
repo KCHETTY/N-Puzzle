@@ -17,6 +17,7 @@
 # include <fstream>
 # include <sstream>
 # include <string>
+# include <sys/time.h>
 # include <vector>
 # include <math.h>
 # include <unistd.h>

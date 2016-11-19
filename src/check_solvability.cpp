@@ -253,11 +253,11 @@ void	yes(t_global *g)
 
 	cout << "ITS A SPIRAL" << endl;
 
-	/*for (int y = 0; y < (int)g->dimension; y++)
+/*	for (int y = 0; y < (int)g->dimension; y++)
 	{
 		for (int x = 0; x < (int)g->dimension; x++)
 		{
-			if (g->puzzle[y][x])
+			if (g->puzzle[y][x] != 0)
 			{
 				ha[i] = g->puzzle[y][x];
 				i++;
@@ -281,6 +281,7 @@ void	yes(t_global *g)
 	}
 
 	cout << "HAHAHAHA " << ha[0] << endl;
+	if (g->dimension % 2)
 	float j = (ha[0] / 2.0);
 	if ((j - (int)j) > 0.0)
 	{

@@ -83,24 +83,41 @@ bool	check_line_size(string fixed, t_global *g, int line_count)
 	return (false);	
 }
 
+string hash_remove(string line)
+{
+		for (int i = 0; i < (int)line.size(); i++)
+		{
+			 if (line[i] == '#')
+			 {
+					line = line.substr(0, i);
+			 }
+		}
+
+		return (line);
+}
+
 void	validate_data(string file, t_global *g)
 {
 	string		line;
 	int			line_count = 0;
 	string		fixed;
-    ifstream	input(file);
+  ifstream	input(file);
 
 	g->dimension = 0;
 
 	while (getline(input, line).good())
 	{
-		line_count += 1;
-		fixed = fix_spaces(line, line_count);
-		cout << "the string " << fixed << endl;
-		validate_line(fixed, line_count);
-		if (g->dimension == 0)
-			g->dimension = stoi(fixed);
-		if (check_line_size(fixed, g, line_count))
-			g->data.push_back(fixed);
+		line = hash_remove(line);
+		if (!line.empty())
+		{
+			line_count += 1;
+			fixed = fix_spaces(line, line_count);
+			cout << "the string " << fixed << endl;
+			validate_line(fixed, line_count);
+			if (g->dimension == 0)
+				g->dimension = stoi(fixed);
+			if (check_line_size(fixed, g, line_count))
+				g->data.push_back(fixed);
+		}
 	}
 }

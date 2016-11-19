@@ -26,16 +26,14 @@ int		main(int argc, char **argv)
 
 	init(&g);
 
-	if (argc == 3)
+	if (argc >= 2)
 	{
-		validate_data(argv[2], &g);
+		if (argv[2] != NULL)
+			validate_data(argv[2], &g);
 		g.heuristic = argv[1];
-		if (g.data.size() == g.dimension)
-		{
-			save_data(&g);
-			check_solvability(&g);
-			solve_puzzle(&g);
-		}
+		save_data(&g);
+		check_solvability(&g);
+		solve_puzzle(&g);
 	}
 	else
 		cout << "missing file input" << endl;
