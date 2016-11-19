@@ -56,6 +56,8 @@ void create_array_2(t_global *g, int pos)
 
 int	calc_dist(int x, int y, int x2, int y2, t_global *g)
 {
+	float meh = 0.0;
+
 	if (strcmp(g->heuristic, "E") == 0)
 		return (ceil(sqrt(pow(x - x2, 2) + pow(y - y2, 2))));
 	else if (strcmp(g->heuristic, "H") == 0)
@@ -64,7 +66,14 @@ int	calc_dist(int x, int y, int x2, int y2, t_global *g)
 			return (1);
 		return (0);
 	}
-	return ((abs((x - x2) + (y - y2))));
+	else
+	{
+		meh = (sqrt(pow(x - x2, 2) + pow(y - y2, 2)));
+		if ((meh - (int)meh) > 0.5)
+			return (ceil(meh + 1));
+		return (ceil(meh));
+	}
+	return (0);
 }
 
 int	do_calc(t_global *g, int x, int y, int move, int pos)
@@ -118,6 +127,7 @@ int	do_calc(t_global *g, int x, int y, int move, int pos)
 		{
 			if (g->puzzle[k][m] != 0)
 			{
+				cout << "g_puzzle " << g->puzzle[k][m] << endl;
 				get_val(&tmp_x, &tmp_y, g, g->puzzle[k][m]);
 				hey += calc_dist(m, k, tmp_x, tmp_y, g);
 				cout << "ufagewufgaur " << hey << endl;
