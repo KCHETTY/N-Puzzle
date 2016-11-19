@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 12:55:43 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/18 11:12:34 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/19 08:47:45 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,7 @@ void	yes(t_global *g)
 	int ha[(g->dimension * g->dimension) - 1];
 	int stuff = 0;
 	int i = 0;
+	int	ze_row = 0;
 	int row = g->dimension - 1;
 	int col = g->dimension - 1;
 	int l = 0;
@@ -212,7 +213,7 @@ void	yes(t_global *g)
 		{
 			for (int z = l; z <= row; z++)
 			{
-				//cout << g->puzzle[t][z] << " ";
+				cout << g->puzzle[t][z] << " ";
 				ha[i] = g->puzzle[t][z];
 				i++;
 			}
@@ -222,7 +223,7 @@ void	yes(t_global *g)
 		{
 			for (int z = t; z <= col; z++)
 			{
-				//cout << g->puzzle[z][row] << " ";
+				cout << g->puzzle[z][row] << " ";
 				ha[i] = g->puzzle[z][row];
 				i++;
 			}
@@ -232,7 +233,7 @@ void	yes(t_global *g)
 		{
 			for (int z = row; z >= l; z--)
 			{
-				//cout << g->puzzle[col][z] << " ";
+				cout << g->puzzle[col][z] << " ";
 				ha[i] = g->puzzle[col][z];
 				i++;
 			}
@@ -242,7 +243,7 @@ void	yes(t_global *g)
 		{
 			for (int z = col; z >= t; z--)
 			{
-				//g->puzzle[z][l] << " ";
+				cout << g->puzzle[z][l] << " ";
 				ha[i] = g->puzzle[z][l];
 				i++;
 			}
@@ -253,19 +254,19 @@ void	yes(t_global *g)
 
 	cout << "ITS A SPIRAL" << endl;
 
-/*	for (int y = 0; y < (int)g->dimension; y++)
+	int test = 1;
+	for (int y = ((int)g->dimension - 1); y >= 0; y--)
 	{
 		for (int x = 0; x < (int)g->dimension; x++)
 		{
-			if (g->puzzle[y][x] != 0)
-			{
-				ha[i] = g->puzzle[y][x];
-				i++;
-			}
+			if (g->c_puzzle[0]->get_puzzle(x, y) == 0)
+				ze_row = test;
 		}
-	}*/
+		test = test  + 1; 
+	}
 
-	for (int i = 0; i < (int)(g->dimension * g->dimension) - 1; i++)
+	cout << "ze_row " << ze_row << endl;
+	for (int i = 0; i < (int)(g->dimension * g->dimension); i++)
 	{
 		for (int k = i; k < (int)(g->dimension * g->dimension); k++)
 		{
@@ -273,25 +274,21 @@ void	yes(t_global *g)
 				stuff++;
 		}
 		cout << "STUFF " << stuff << endl;
-		if (i == 0)
-			ha[0] = stuff;
-		else
-			ha[0] += stuff;
-		stuff = 0;
 	}
-
+	ha[0] = stuff;
 	cout << "HAHAHAHA " << ha[0] << endl;
-	if (g->dimension % 2)
-	float j = (ha[0] / 2.0);
-	if ((j - (int)j) > 0.0)
-	{
-		cout << "Solvable..." << endl;
-		error();
-	}
+	if (g->dimension % 2 == 1 && ha[0] % 2 == 0)
+		cout << "solvable.." << endl;
+	else if (g->dimension % 2 == 0 && ze_row % 2 == 1 && ha[0] % 2 == 0)
+		cout << "solvable.." << endl;
+	else if (g->dimension % 2 == 0 && ze_row % 2 == 0 && ha[0] % 2 == 1)
+		cout << "solvable.." << endl;
 	else
 	{
-		cout << "solvable..." << endl;	
+		cout << "unsolvable..." << endl;
+		error();
 	}
+	sleep(15);
 }
 
 void	check_solvability(t_global *g)
