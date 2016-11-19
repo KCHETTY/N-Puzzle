@@ -6,7 +6,7 @@
 /*   By: kchetty <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 12:55:43 by kchetty           #+#    #+#             */
-/*   Updated: 2016/11/19 09:18:16 by kchetty          ###   ########.fr       */
+/*   Updated: 2016/11/19 09:42:10 by kchetty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ void	yes(t_global *g)
 	int dir = 0; 
 
 
-	while (t <= row && t <= col)
+	while (l <= row && t <= col)
 	{
 		if (dir == 0)
 		{
